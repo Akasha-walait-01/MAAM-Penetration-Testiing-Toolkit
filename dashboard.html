@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Inventory Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    background-color: #0b0c10;
+    color: #66ff66;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px;
+  }
+  input, select, textarea, button {
+    background-color: #1f2833;
+    color: #66ff66;
+    border: 1px solid #45a29e;
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #45a29e;
+    color: black;
+    cursor: pointer;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  th, td {
+    border: 1px solid #45a29e;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #1f2833;
+  }
+  a {
+    color: #66ff66;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .chart-container {
+    width: 80%;
+    margin: auto;
+  }
+</style>
+</head>
+<body>
+<h2>Inventory Dashboard</h2>
+<div class="chart-container">
+  <canvas id="stockChart"></canvas>
+</div>
+
+<script>
+  const ctx = document.getElementById('stockChart').getContext('2d');
+  const stockChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: {{ labels | safe }},  // Product or Warehouse names from backend
+          datasets: [{
+              label: 'Quantity',
+              data: {{ quantities | safe }},
+              backgroundColor: 'rgba(102, 255, 102, 0.7)',
+              borderColor: 'rgba(102, 255, 102, 1)',
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: { beginAtZero: true }
+          }
+      }
+  });
+</script>
+
+<a href="/">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MAAM Pentester</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 2rem;
+            margin: 0;
+        }
+        h1 {
+            border-bottom: 2px solid #0f0;
+            padding-bottom: 0.5rem;
+        }
+        form {
+            margin-top: 2rem;
+            background: rgba(0, 255, 0, 0.05);
+            padding: 2rem;
+            border: 1px solid #0f0;
+            border-radius: 8px;
+        }
+        label, select, input, button {
+            display: block;
+            margin-bottom: 1rem;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 0.5rem;
+            background: #111;
+            color: #0f0;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+        }
+        button {
+            background: #0f0;
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0c0;
+        }
+        a {
+            color: #0f0;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>⚔ MAAM Pentester</h1>
+    <form action="/scan" method="POST">
+        <label for="url">🔗 Enter Target URL:</label>
+        <input type="text" id="url" name="url" placeholder="http://example.com" required>
+
+        <label for="scan_type">🔢 Select Scan Type:</label>
+        <select name="scan_type" id="scan_type" required>
+            <option value="ping">Ping</option>
+            <option value="sqlmap">SQL Injection Test (sqlmap)</option>
+            <option value="xss">XSS Test (XSStrike)</option>
+            <option value="dirsearch">Directory Bruteforce (dirsearch)</option>
+            <option value="nmap">Port Scan (nmap)</option>
+            <option value="whois">WHOIS Lookup</option>
+        </select>
+
+        <button type="submit">🔎 Start Scan</button>
+    </form>
+    <br>
+    <a href="/history">📃 View Scan History</a>
+</body>
+</html>
